@@ -1,47 +1,27 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: CICD Pipeline
+name: Web Api - Continuous Deployment
 
 on:
   push:
-    branches: [ "**" ]
-    tags: ['**']
-  pull_request:
-    branches: [ "**" ]
-  workflow_dispatch:
+    tags: ['web-api@**']
 
 jobs:
-  build_and_test:
-    runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up Node.js version
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20.x'
-
-      - name: build
-        run: |
-          npm install
-          npm run build --if-present
-
-      - name: test
-        run: |
-          npm run test --if-present
+  ci:
+    uses: './.github/workflows/web-api-ci.yml'
 
   package:
     runs-on: ubuntu-latest
-    needs: build_and_test
-    if: ${{ startsWith(github.ref, 'refs/tags/') }}
+    defaults:
+      run:
+        working-directory: ./services/web-api
+
+    needs: ci
 
     steps:
       - uses: actions/checkout@v4
 
       - name: Zip artifact for deployment
-        if: ${{ startsWith(github.ref, 'refs/tags/') }}
         uses: thedoctor0/zip-release@0.7.5
         with:
           type: 'zip'
@@ -49,7 +29,6 @@ jobs:
           exclusions: '/*node_modules/*'
 
       - name: Upload artifact for deployment job
-        if: ${{ startsWith(github.ref, 'refs/tags/') }}
         uses: actions/upload-artifact@v3
         with:
           name: generic-app
@@ -58,7 +37,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: package
-    if: ${{ startsWith(github.ref, 'refs/tags/') }}
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
