@@ -9,7 +9,7 @@
     "create-open-api-specs": "ts-node ./src/main.ts create-open-api-specs swagger.json",
     "pregenerate-ts-client": "npm run create-open-api-specs",
     "generate-ts-client": "ts-node ./dev-scripts/generate-typescript-client.ts --swaggerfile ./swagger.json --outdir ./client/src/clients/ --filename generic-app-api.ts",
-    "prebuild": "npm install -g @vue/cli-service && npm run build --prefix client",
+    "prebuild": "npm install --prefix client && npm run build --prefix client",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "prestart": "npm install --prefix client && npm run build --prefix client",
