@@ -40,7 +40,8 @@ async function bootstrap(options: BootstrapOptions) {
 
   if (options.command === 'StartApp') {
     const port = config.get<number>('PORT', 3030);
-    logger.log(`Run app on port ${port}`);
+    const environment = config.get<string>('NODE_ENV');
+    logger.log(`Run app on port ${port} in ${environment} environment`);
 
     await app.listen(port);
   } else if (options.command === 'CreateOpenApiSpecs') {
