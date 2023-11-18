@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
+    "start": "npm install && npm run build && vite preview --port 8080",
     "preview": "vite preview",
     "test:unit": "vitest",
     "build-only": "vite build",
