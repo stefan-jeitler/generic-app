@@ -1,0 +1,5 @@
+{
+    "appService.showBuildDuringDeployPrompt": false,
+    "appService.defaultWebAppToDeploy": "/subscriptions/4186e1fb-039f-497b-9097-cb433e969070/resourceGroups/rg-generic-app/providers/Microsoft.Web/sites/generic-app2",
+    "appService.deploySubpath": "."
+}
