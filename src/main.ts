@@ -5,10 +5,11 @@ import { join } from 'path';
 import { writeFile } from 'fs';
 import { Logger } from '@nestjs/common';
 import { program } from 'commander';
+import { ConfigService } from '@nestjs/config';
 
-type BootstrapOptions =
-  | { command: 'StartApp' }
-  | { command: 'CreateOpenApiSpecs'; filepath: string };
+type StartApp = { command: 'StartApp' };
+type CreateOpenApiSpecs = { command: 'CreateOpenApiSpecs'; filepath: string };
+type BootstrapOptions = StartApp | CreateOpenApiSpecs;
 
 const logger = new Logger(bootstrap.name);
 
@@ -25,10 +26,12 @@ async function bootstrap(options: BootstrapOptions) {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('api');
 
+  const config = app.get(ConfigService);
+
   const openApiDocumentConfig = new DocumentBuilder()
     .setTitle('Generic App')
     .setDescription("The Generics App's API description")
-    .setVersion('1.0')
+    .setVersion('0.0.0')
     .addTag('generic-app')
     .build();
 
@@ -36,7 +39,10 @@ async function bootstrap(options: BootstrapOptions) {
   SwaggerModule.setup('api', app, document);
 
   if (options.command === 'StartApp') {
-    await app.listen(process.env.PORT);
+    const port = config.get<number>('PORT', 3030);
+    logger.log(`Run app on port ${port}`);
+
+    await app.listen(port);
   } else if (options.command === 'CreateOpenApiSpecs') {
     printOpenApiSpecifications(document, options.filepath);
   }
