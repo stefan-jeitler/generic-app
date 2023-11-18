@@ -40,7 +40,7 @@ jobs:
         with:
           type: 'zip'
           filename: 'release.zip'
-          exclusions: '*.git* /*node_modules/* .editorconfig'
+          exclusions: '/*node_modules/*'
 
       - name: Upload artifact for deployment job
         if: ${{ startsWith(github.ref, 'refs/tags/') }}
