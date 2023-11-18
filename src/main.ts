@@ -24,7 +24,6 @@ async function printOpenApiSpecifications(
 
 async function bootstrap(options: BootstrapOptions) {
   const app = await NestFactory.create(AppModule);
-  app.setGlobalPrefix('api');
 
   const config = app.get(ConfigService);
 
@@ -36,7 +35,7 @@ async function bootstrap(options: BootstrapOptions) {
     .build();
 
   const document = SwaggerModule.createDocument(app, openApiDocumentConfig);
-  SwaggerModule.setup('api', app, document);
+  SwaggerModule.setup('', app, document);
 
   if (options.command === 'StartApp') {
     const port = config.get<number>('PORT', 3030);
