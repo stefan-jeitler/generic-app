@@ -3,7 +3,7 @@ name: Client App - Continuous Deployment
 
 on:
   push:
-    tags: ['client-app@**']
+    tags: ['client-app@*']
 
 jobs:
 
@@ -21,18 +21,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Zip artifact for deployment
-        uses: thedoctor0/zip-release@0.7.5
+      - name: Set up Node.js version
+        uses: actions/setup-node@v4
         with:
-          type: 'zip'
-          filename: 'release.zip'
-          exclusions: '/*node_modules/*'
+          node-version: '20.x'
+
+      - name: build for production
+        run: |
+          npm install
+          npm run build-only
+
+      - name: Zip artifact for deployment
+        run: |
+          zip -r release.zip ./dist
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: generic-client-app
-          path: release.zip
+          path: ./release.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -55,15 +62,12 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_ED55E974E9EF4381B3EF21800DC31ACA }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_333467AA1DE7432BBE2EC86B1D04A5BB }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_00CC05FB96344EB1918646908635B15D }}
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
       - name: 'Deploy to Azure Web App'
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: 'generic-app2'
-          slot-name: 'Production'
-          package: .
+        run: |
+          echo 'push artifact to blob storage'
+
           
