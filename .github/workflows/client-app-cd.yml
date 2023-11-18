@@ -1,20 +1,20 @@
 
-name: Web Api - Continuous Deployment
+name: Client App - Continuous Deployment
 
 on:
   push:
-    tags: ['web-api@**']
+    tags: ['client-app@**']
 
 jobs:
 
   ci:
-    uses: './.github/workflows/web-api-ci.yml'
+    uses: './.github/workflows/client-app-ci.yml'
 
   package:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./services/web-api
+        working-directory: ./apps/client-app
 
     needs: ci
 
@@ -31,7 +31,7 @@ jobs:
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
-          name: web-api-generic-app
+          name: generic-client-app
           path: release.zip
 
   deploy:
@@ -47,7 +47,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
-          name: web-api-generic-app
+          name: generic-client-app
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
