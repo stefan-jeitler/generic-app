@@ -1,0 +1,39 @@
+
+name: Client App - Continuous Integration
+
+on:
+  push:
+    branches: [ "**" ]
+    paths: 
+      - 'apps/client-app/**'
+  pull_request:
+    branches: [ "**" ]
+    paths:
+      - 'apps/client-app/**'
+  workflow_call:
+  
+
+jobs:
+  
+  build_and_test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./apps/client-app
+    
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js version
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.x'
+
+      - name: Build
+        run: |
+          npm install
+          npm run build
+
+      - name: Test
+        run: |
+          npm run test:unit
