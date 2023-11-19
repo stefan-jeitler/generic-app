@@ -1,0 +1,66 @@
+<mxfile host="app.diagrams.net" modified="2023-11-20T13:30:33.368Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="SZVUNNkeiI3ccQvMRA2m" version="22.1.3" type="device">
+  <diagram name="Page-1" id="Wie0-M_OVjGahc_1By-U">
+    <mxGraphModel dx="1434" dy="750" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="XRavb7x-YclvjkSsP-jG-1" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="16" y="47" width="824" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="XRavb7x-YclvjkSsP-jG-2" value="Client App - CI/CD" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="16" y="7" width="205" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="XRavb7x-YclvjkSsP-jG-4" value="" style="endArrow=none;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="XRavb7x-YclvjkSsP-jG-1" target="XRavb7x-YclvjkSsP-jG-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="321" y="377" as="sourcePoint" />
+            <mxPoint x="371" y="327" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="XRavb7x-YclvjkSsP-jG-5" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Build and Test&lt;/b&gt;&lt;br&gt;&lt;ul&gt;&lt;li style=&quot;text-align: left;&quot;&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Build&lt;/font&gt;&lt;/li&gt;&lt;li style=&quot;text-align: left;&quot;&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Test&lt;/font&gt;&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="47" y="86" width="190" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="XRavb7x-YclvjkSsP-jG-6" value="CI" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="16" y="237" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="XRavb7x-YclvjkSsP-jG-7" value="CD" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="16" y="267" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="XRavb7x-YclvjkSsP-jG-8" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;CI / Build and Test&lt;/font&gt;&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="47" y="316" width="190" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="XRavb7x-YclvjkSsP-jG-9" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="XRavb7x-YclvjkSsP-jG-8" target="XRavb7x-YclvjkSsP-jG-5">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="287" y="376" as="sourcePoint" />
+            <mxPoint x="337" y="326" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="XRavb7x-YclvjkSsP-jG-13" value="uses workflow" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="XRavb7x-YclvjkSsP-jG-9">
+          <mxGeometry x="0.3231" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="XRavb7x-YclvjkSsP-jG-10" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Package&lt;/b&gt;&lt;br&gt;&lt;ul style=&quot;&quot;&gt;&lt;li style=&quot;text-align: left;&quot;&gt;Build for Production&lt;/li&gt;&lt;li style=&quot;text-align: left;&quot;&gt;Upload Build Artifact&lt;/li&gt;&lt;/ul&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=center;" vertex="1" parent="1">
+          <mxGeometry x="285" y="316" width="230" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="XRavb7x-YclvjkSsP-jG-11" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Deploy&lt;/b&gt;&lt;br&gt;&lt;ul style=&quot;&quot;&gt;&lt;li style=&quot;text-align: left;&quot;&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Download Build Artifact&lt;br&gt;&lt;/font&gt;&lt;/li&gt;&lt;li style=&quot;text-align: left;&quot;&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Azure login&lt;/font&gt;&lt;/li&gt;&lt;li style=&quot;text-align: left;&quot;&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Upload to Blob Storage&lt;/font&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="555" y="316" width="230" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="XRavb7x-YclvjkSsP-jG-16" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="XRavb7x-YclvjkSsP-jG-8" target="XRavb7x-YclvjkSsP-jG-10">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="380" as="sourcePoint" />
+            <mxPoint x="450" y="330" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="142" y="420" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="XRavb7x-YclvjkSsP-jG-17" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="XRavb7x-YclvjkSsP-jG-10" target="XRavb7x-YclvjkSsP-jG-11">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="380" as="sourcePoint" />
+            <mxPoint x="450" y="330" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
