@@ -5,66 +5,54 @@ on:
   push:
     tags: ['web-api@*']
 
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: generic-app-web-api:tatest
+
 jobs:
 
   ci:
     uses: './.github/workflows/web-api-ci.yml'
 
   package:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./services/web-api
+  #   runs-on: ubuntu-latest
+  #   defaults:
+  #     run:
+  #       working-directory: ./services/web-api
+  #   permissions:
+  #     contents: read
+  #     packages: write
+  #   needs: ci
 
-    needs: ci
+  #   steps:
+  #       uses: actions/checkout@v4
 
-    steps:
-      - uses: actions/checkout@v4
+  #     - name: Log in to the Container registry
+  #       uses: docker/login-action@v3
+  #       with:
+  #         registry: ${{ env.REGISTRY }}
+  #         username: ${{ github.actor }}
+  #         password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Zip artifact for deployment
-        uses: thedoctor0/zip-release@0.7.6
-        with:
-          type: 'zip'
-          filename: 'release.zip'
-          directory: ./services/web-api
-          exclusions: '/*node_modules/*'
+  #     - name: Extract metadata (tags, labels) for Docker
+  #       id: meta
+  #       uses: docker/metadata-action@v5
+  #       with:
+  #         images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v3
-        with:
-          name: web-api-generic-app
-          path: ./services/web-api/release.zip
+  #     - name: Build and push Docker image
+  #       uses: docker/build-push-action@v5
+  #       with:
+  #         context: ./services/web-api
+  #         push: true
+  #         tags: ${{ steps.meta.outputs.tags }}
+  #         labels: ${{ steps.meta.outputs.labels }}
 
-  deploy:
-    runs-on: ubuntu-latest
-    needs: package
-    environment:
-      name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-    permissions:
-      id-token: write #This is required for requesting the JWT
-
-    steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v3
-        with:
-          name: web-api-generic-app
-
-      - name: Unzip artifact for deployment
-        run: unzip release.zip
-      
-      - name: Login to Azure
-        uses: azure/login@v1
-        with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_ED55E974E9EF4381B3EF21800DC31ACA }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_333467AA1DE7432BBE2EC86B1D04A5BB }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_00CC05FB96344EB1918646908635B15D }}
-
-      - name: 'Deploy to Azure Web App'
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: 'api-generic-app2'
-          slot-name: 'Production'
-          package: .
-          
+  # deploy:
+  #   runs-on: ubuntu-latest
+  #   needs: publish
+  #   environment:
+  #     name: 'Production'
+  #     url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+  #   permissions:
+  #     id-token: write #This is required for requesting the JWT
