@@ -9,7 +9,9 @@ on:
   pull_request:
     branches: [ "**" ]
     paths:
-      - 'services/web-api/**'  
+      - 'services/web-api/**'
+  workflow_call:
+  
 
 jobs:
   

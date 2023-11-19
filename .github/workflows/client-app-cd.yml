@@ -26,20 +26,19 @@ jobs:
         with:
           node-version: '20.x'
 
-      - name: build for production
+      - name: Build for production
         run: |
           npm install
           npm run build-only
 
       - name: Zip artifact for deployment
-        run: |
-          zip -r release.zip ./dist
+        run: zip -r release.zip ./dist/*
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: generic-client-app
-          path: ./release.zip
+          path: ./apps/client-app/release.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -66,8 +65,13 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-      - name: 'Deploy to Azure Web App'
-        run: |
-          echo 'push artifact to blob storage'
+      - name: 'Deploy client app'
+        uses: azure/CLI@v1
+        with:
+          azcliversion: 2.54.0
+          inlineScript: |
+            az storage blob upload-batch --account-name "$CLIENT_APP_STORAGE_ACCOUNT" --destination '$web' --source ./dist --overwrite
+        env:
+          CLIENT_APP_STORAGE_ACCOUNT: ${{ vars.CLIENT_APP_STORAGE_ACCOUNT }}
 
           
