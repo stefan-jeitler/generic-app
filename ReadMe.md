@@ -79,14 +79,12 @@ convention `<technical-id>@<version>`, e.g.
  git push --tags
  ```
 
-The deployment workflow starts only if there is a match by the tag name, like
+The deployment workflow starts only if the tag name matches the pattern in [.github/workflows/web-api-cd.yml](.github/workflows/web-api-cd.yml)
 
 ```yml
   push:
     tags: ['web-api@*']
 ```
-
-[.github/workflows/web-api-cd.yml](.github/workflows/web-api-cd.yml)
 
 ### Client App (client-app)
 
