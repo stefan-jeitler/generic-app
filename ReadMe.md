@@ -1,8 +1,8 @@
 # Generic App - *a monorepo's tale*
 
 A generic app without any use case.  
-The main purpose of this project is to get familiar with Github as code hosting platform and  
-to create a monorepo with multiple apps where each app can be deployed indenpendently.  
+The main purposes of this project are getting familiar with Github as code hosting platform and  
+creating a monorepo with multiple apps where each app can be deployed indenpendently.  
 
 Every deployable software in this repo gets a unique human-readable identifier that I call **technical-id**.  
 Right now, there are two of them **web-api** and **client-app**.
