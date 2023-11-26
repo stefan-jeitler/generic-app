@@ -104,5 +104,5 @@ This service is deployed as a docker container and runs in Azure as Azure Web Ap
 ### Package Sharing
 
 The web-api creates already a typescript client for its endpoints.
-By running `npm run generate-ts-client` the generated client will be placed in [./services/web-api/clients](./services/web-api/clients).  
+By running `npm run generate-ts-client` the generated file will be placed in [./services/web-api/clients](./services/web-api/clients).  
 Find a way to share this client with the client-app without using a package manager like npm.
