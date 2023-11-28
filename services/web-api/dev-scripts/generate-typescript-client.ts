@@ -7,7 +7,7 @@ program
   .requiredOption('--outdir <string>', 'Output directory')
   .requiredOption(
     '--filename <string>',
-    'Filename of the newly generated client',
+    'Filename of the generated client',
   )
   .action((options) => {
     console.log(options);
