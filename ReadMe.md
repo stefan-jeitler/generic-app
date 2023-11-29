@@ -94,7 +94,7 @@ Since the client-app is just static content that needs to be served I can use an
 
 ### Web Api (web-api)
 
-This service is deployed as a docker container and runs in Azure as Azure Web App.  
+This service is deployed as a docker container and runs in Azure as Web App.  
 *Github Packages* is a good fit as container registry.
 
 ![web-api-ci-cd](./docs/assets/web-api-ci-cd.png)
