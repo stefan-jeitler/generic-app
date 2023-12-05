@@ -65,7 +65,7 @@ For simplicity's sake I have only one deployment environment that is **Productio
 
 Deplyoments get triggered by `git tags`, you can use both **leightweight** and **annotated** tags.  
 
-The simplest way to deploy a project is using a *lightweight tag* that's name follows the  
+The simplest way to deploy a project is creating a tag that's name follows the  
 convention `<technical-id>@<version>`, e.g.
 
  ```bash
