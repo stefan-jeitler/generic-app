@@ -1,5 +1,11 @@
 # Generic App - *a monorepo's tale*
 
+[![Client App - Continuous Integration](https://github.com/stefan-jeitler/generic-app/actions/workflows/client-app-ci.yml/badge.svg)](https://github.com/stefan-jeitler/generic-app/actions/workflows/client-app-ci.yml)
+[![Client App - Continuous Deployment](https://github.com/stefan-jeitler/generic-app/actions/workflows/client-app-cd.yml/badge.svg)](https://github.com/stefan-jeitler/generic-app/actions/workflows/client-app-cd.yml)
+
+[![Web Api - Continuous Integration](https://github.com/stefan-jeitler/generic-app/actions/workflows/web-api-ci.yml/badge.svg?branch=main)](https://github.com/stefan-jeitler/generic-app/actions/workflows/web-api-ci.yml)
+[![Web Api - Continuous Deployment](https://github.com/stefan-jeitler/generic-app/actions/workflows/web-api-cd.yml/badge.svg)](https://github.com/stefan-jeitler/generic-app/actions/workflows/web-api-cd.yml)
+
 A generic app without any use case.  
 The main purpose of this project is to create a monorepo with multiple apps where each app can be deployed indenpendently.  
 
